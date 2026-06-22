@@ -1,0 +1,236 @@
+@charset "UTF-8";
+
+/* ===== Base typography ===== */
+@namespace epub "http://www.idpf.org/2007/ops";
+
+body {
+  font-family: "Noto Serif", "Times New Roman", Georgia, serif;
+  line-height: 1.75;
+  margin: 0.8em;
+  text-align: justify;
+  color: #2C2C2C !important;
+  background: #ffffff !important;
+  hyphens: auto;
+}
+
+/* ===== Headings ===== */
+h1 {
+  font-size: 1.85em;
+  color: #8B1A2F !important;
+  text-align: center;
+  page-break-before: always;
+  border-bottom: 3px double #C9A96E;
+  padding-bottom: 0.6em;
+  margin: 2.5em 0 1.2em;
+  font-weight: bold;
+  letter-spacing: 0.02em;
+}
+
+h2 {
+  font-size: 1.4em;
+  color: #2C2C2C !important;
+  border-left: 5px solid #C9A96E;
+  padding-left: 0.7em;
+  margin: 1.8em 0 0.9em 0;
+  font-weight: bold;
+  text-indent: 0;
+}
+
+h3 {
+  font-size: 1.18em;
+  color: #5a4a35 !important;
+  margin: 1.4em 0 0.7em 0.4em;
+  font-weight: bold;
+  text-indent: 0;
+  padding-left: 0.3em;
+}
+
+h4 {
+  font-size: 1.05em;
+  color: #6b5340 !important;
+  margin: 1.2em 0 0.5em 0.8em;
+  font-weight: bold;
+  font-style: italic;
+  text-indent: 0;
+  padding-left: 0.4em;
+}
+
+/* Reduce gap between number and first character in heading */
+h3, h4 {
+  /* Tighter spacing: "1. Xúc" not "1.  Xúc" */
+  word-spacing: -0.05em;
+}
+
+/* ===== Body text ===== */
+p {
+  text-indent: 1.5em;
+  margin: 0 0 0.4em;
+  text-align: justify;
+  color: #2C2C2C !important;
+}
+
+p.no-indent,
+h1 + p, h2 + p, h3 + p, h4 + p {
+  text-indent: 0;
+}
+
+/* ===== Italic emphasis (Pali, foreign terms) ===== */
+em {
+  font-style: italic;
+  color: #6b5340 !important;
+}
+
+em.pali {
+  font-style: italic;
+  color: #6b5340 !important;
+}
+
+strong {
+  color: #2C2C2C !important;
+  font-weight: bold;
+}
+
+/* ===== Blockquotes ===== */
+blockquote {
+  border-left: 4px solid #C9A96E;
+  padding: 0.6em 0 0.6em 1em;
+  font-style: italic;
+  color: #555 !important;
+  margin: 1em 0;
+  background: #faf6f0;
+  border-radius: 0 4px 4px 0;
+}
+
+/* ===== Lists ===== */
+ul, ol {
+  padding-left: 1.6em;
+  margin: 0.5em 0 0.8em;
+  color: #2C2C2C !important;
+}
+
+li {
+  margin: 0.2em 0;
+  color: #2C2C2C !important;
+}
+
+/* ===== Images ===== */
+figure {
+  margin: 1.5em 0;
+  text-align: center;
+  page-break-inside: avoid;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 1.2em auto;
+  border: 1px solid #e0d6c4;
+  border-radius: 4px;
+  padding: 4px;
+  background: #fbf8f0;
+}
+
+figcaption,
+figure > p {
+  text-align: center;
+  font-size: 0.95em;
+  color: #6b5340 !important;
+  margin: 0.3em auto 1.5em;
+  font-style: italic;
+  text-indent: 0;
+}
+
+/* ============================================================ */
+/* ===== TABLES — Reader-theme friendly                    ===== */
+/* ============================================================ */
+/*
+  STRATEGY: 
+  - DO NOT set background-color (reader theme decides)
+  - DO NOT set explicit text color (inherit theme)
+  - ONLY borders + spacing + font weight
+  - Works in BOTH light AND dark mode of any reader
+*/
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin: 1em auto;
+  width: 100%;
+  max-width: 100%;
+  font-size: 0.92em;
+  line-height: 1.5;
+  page-break-inside: avoid;
+  border: 3px solid #C9A96E;  /* Outer border: thick amber */
+  /* NO background, NO text-color — reader handles */
+}
+
+table th,
+table td {
+  border: 1px solid #C9A96E;  /* All inner borders: amber 1px */
+  padding: 0.5em 0.7em;
+  text-align: left;
+  vertical-align: top;
+  /* NO background, NO color */
+}
+
+/* Header row — thicker amber separator below */
+table th,
+table thead th,
+table thead tr th {
+  font-weight: bold;
+  text-align: center;
+  letter-spacing: 0.02em;
+  border-bottom: 3px solid #C9A96E;  /* Thicker amber under header */
+}
+
+/* Italic in tables — inherit theme color */
+table em,
+table em.pali,
+table * em {
+  font-style: italic;
+}
+
+/* Strong in tables */
+table strong {
+  font-weight: bold;
+}
+
+/* ===== Cover page ===== */
+.title-page {
+  text-align: center;
+  margin-top: 25%;
+}
+
+.title-page h1 {
+  border: none;
+  font-size: 2.8em;
+  color: #8B1A2F !important;
+  padding-bottom: 0;
+}
+
+.subtitle {
+  font-size: 1.15em;
+  color: #6b5340 !important;
+  margin: 1em 0;
+  font-style: italic;
+}
+
+.author {
+  margin-top: 3em;
+  font-style: italic;
+  color: #5a4a35 !important;
+}
+
+/* ===== Index ===== */
+.index-section p {
+  text-indent: 0;
+  margin: 0.15em 0;
+}
+
+/* ===== Page breaks ===== */
+.chapter {
+  page-break-before: always;
+}
+
+/* No dark-mode override needed — tables inherit theme */
